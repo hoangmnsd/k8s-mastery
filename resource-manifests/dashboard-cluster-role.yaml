@@ -9,5 +9,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: admin-user
-  namespace: kube-system
-#  namespace: kubernetes-dashboard
+  namespace: kubernetes-dashboard
