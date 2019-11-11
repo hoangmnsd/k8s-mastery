@@ -1,0 +1,27 @@
+# 增加一些想要在dashboard上操作的資源
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  labels:
+    k8s-app: kubernetes-dashboard
+  name: kubernetes-dashboard
+rules:
+ # Allow Metrics Scraper to get metrics from the Metrics server
+  - apiGroups: ["","metrics.k8s.io"]
+    resources: ["configmaps","pods", "nodes","namespaces","secrets","persistentvolumeclaims"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["","apps"]
+    resources: ["statefulsets","replicationcontrollers", "ingresses","services","daemonsets","configmaps","pods", "nodes","namespaces","secrets","persistentvolumeclaims","replicasets","deployments","events"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["","extensions"]
+    resources: ["ingresses"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["","batch"]
+    resources: ["jobs", "cronjobs"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["","storage.k8s.io"]
+    resources: ["storageclasses", "persistentvolumes"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["","rbac.authorization.k8s.io"]
+    resources: ["clusterroles"]
+    verbs: ["get", "list", "watch"]
